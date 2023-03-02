@@ -1,0 +1,18 @@
+Data:
+  charges: Data/Charges_use.csv
+  damages: Data/Damages_use.csv
+  endorses: Data/Endorse_use.csv
+  persons: Data/Primary_Person_use.csv
+  units: Data/Units_use.csv
+  restricts: Data/Restrict_use.csv
+
+Output:
+  analytics1 : Output/answer1.csv
+  analytics2 : Output/answer2.csv
+  analytics3 : Output/answer3.csv
+  analytics4 : Output/answer4.csv
+  analytics5 : Output/answer5.csv
+  analytics6 : Output/answer6.csv
+  analytics7 : Output/answer7.csv
+  analytics8 : Output/answer8.csv
+
