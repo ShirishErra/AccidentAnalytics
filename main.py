@@ -27,7 +27,6 @@ class Accident:
     def no_of_accidents_where_2wheeler_involved(self):
         """
         The crashes where the vehicle type was 2 wheeler.
-        :param output_path: output file path
         :return: dataframe count
         """
         df = self.df_units[self.df_units["VEH_BODY_STYL_ID"].str.contains("MOTORCYCLE", na=False)].drop_duplicates()
@@ -39,7 +38,6 @@ class Accident:
         """
         The state has highest number of accidents in which females are involved
 
-        :param output_path: output file path
         :return: state name with highest female accidents
         """
         df_1 = self.df_primary_person[self.df_primary_person.PRSN_GNDR_ID == "FEMALE"].groupby('DRVR_LIC_STATE_ID').count().sort_values('PRSN_GNDR_ID', ascending=False).reset_index().head(1)
@@ -48,8 +46,6 @@ class Accident:
     def get_top_5to15_vehicles_involved_in_accidents(self):
         """
         The Top 5th to 15th VEH_MAKE_IDs that contribute to a largest number of injuries including death
-
-        :param output_path: output file path
         :return: Top 5th to 15th VEH_MAKE_IDs that contribute to a largest number of injuries including death
         """
         self.df_units['TOT_CASUALTIES_CNT'] = self.df_units['TOT_INJRY_CNT'] + self.df_units['DEATH_CNT']
@@ -63,7 +59,6 @@ class Accident:
         """
         The top ethnic user group of each unique body style, for all the body styles involved in crashes
 
-        :param output_path: output path of the output to be stored
         :return: none
         """
         df = pd.merge(self.df_units, self.df_primary_person, on='CRASH_ID', how='inner')
@@ -83,7 +78,6 @@ class Accident:
         """
         Among the crashed cars, the Top 5 Zip Codes with highest number crashes
         with alcohols as the contributing factor to a crash (Use Driver Zip Code)
-        :param output_path: output path of the output to be stored
         :return: none
         """
         df = pd.merge(self.df_units, self.df_primary_person, on='CRASH_ID', how='inner')
@@ -101,7 +95,6 @@ class Accident:
         """
         Counts Distinct Crash IDs where No Damaged Property was observed and Damage Level (VEH_DMAG_SCL~) is above 4
         and car avails Insurance.
-        :param output_path: output file path
         :return: List of crash ids
         """
 
@@ -125,7 +118,6 @@ class Accident:
         has licensed Drivers, used top 10 used vehicle colours and has car licensed with the Top 25 states
         with highest number of offences (to be deduced from the data)
 
-        :param output_path: output file path
         :return List of Vehicle brands
         """
         topstates = self.df_units["VEH_LIC_STATE_ID"].value_counts().reset_index()
